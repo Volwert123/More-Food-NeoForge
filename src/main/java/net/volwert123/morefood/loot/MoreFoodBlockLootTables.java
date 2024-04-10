@@ -11,12 +11,14 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.volwert123.morefood.block.MoreFoodBlocks;
 import net.volwert123.morefood.block.custom.RiceCropBlock;
 import net.volwert123.morefood.item.MoreFoodItems;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MoreFoodBlockLootTables extends BlockLootSubProvider {
 
@@ -30,7 +32,7 @@ public class MoreFoodBlockLootTables extends BlockLootSubProvider {
         add(MoreFoodBlocks.RICE_CROP.get(), applyExplosionDecay(MoreFoodBlocks.RICE_CROP.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(MoreFoodItems.RICE.get()))).withPool(LootPool.lootPool().when(lootitemcondition$builder).add(LootItem.lootTableItem(MoreFoodItems.RICE.get()).apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
     }
 
-    protected Iterable<Block> getKnownBlocks() {
-        return MoreFoodBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        return MoreFoodBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::value).collect(Collectors.toList());
     }
 }

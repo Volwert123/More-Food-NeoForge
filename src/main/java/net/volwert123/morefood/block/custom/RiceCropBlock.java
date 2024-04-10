@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.volwert123.morefood.item.MoreFoodItems;
+import org.jetbrains.annotations.NotNull;
 
 public class RiceCropBlock extends CropBlock {
     public static final int MAX_AGE = 7;
@@ -16,11 +17,11 @@ public class RiceCropBlock extends CropBlock {
         super(properties);
     }
 
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return MoreFoodItems.RICE.get();
     }
 
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 

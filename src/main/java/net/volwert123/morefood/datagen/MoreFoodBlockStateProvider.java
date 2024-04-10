@@ -4,9 +4,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.volwert123.morefood.MoreFood;
 import net.volwert123.morefood.block.MoreFoodBlocks;
 import net.volwert123.morefood.block.custom.RiceCropBlock;
@@ -20,7 +20,7 @@ public class MoreFoodBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        makeCrop(((RiceCropBlock) MoreFoodBlocks.RICE_CROP.get()), "rice_stage", "rice_stage");
+        makeCrop(MoreFoodBlocks.RICE_CROP.get(), "rice_stage", "rice_stage");
     }
 
     public void makeCrop(CropBlock cropBlock, String modelName, String textureName) {

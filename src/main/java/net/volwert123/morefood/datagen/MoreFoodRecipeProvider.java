@@ -1,120 +1,119 @@
 package net.volwert123.morefood.datagen;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.volwert123.morefood.MoreFood;
 import net.volwert123.morefood.item.MoreFoodItems;
 
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class MoreFoodRecipeProvider extends RecipeProvider implements IConditionBuilder {
-
-    public MoreFoodRecipeProvider(PackOutput output) {
-        super(output);
+    public MoreFoodRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        createIronFoodRecipe(MoreFoodItems.IRON_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_CARROT.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_CARROT.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_CARROT.get())));
-        createSmeltingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_smelting"));
-        createSmokingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_smoking"));
-        createCampfireCookingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_campfire_cooking"));
-        createPiecesRecipe(MoreFoodItems.CARROT_PIECES.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.CARROT_SOUP.get(), Items.CARROT, MoreFoodItems.CARROT_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_SOUP.get())));
-        createBreadRecipe(MoreFoodItems.CARROT_BREAD.get(), Items.CARROT, MoreFoodItems.CARROT_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_BREAD.get())));
-        createPieRecipe(MoreFoodItems.CARROT_PIE.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_PIE.get())));
+    protected void buildRecipes(RecipeOutput output) {
+        createIronFoodRecipe(MoreFoodItems.IRON_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_CARROT.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_CARROT.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_CARROT.get())));
+        createSmeltingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_smelting"));
+        createSmokingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_smoking"));
+        createCampfireCookingRecipe(MoreFoodItems.COOKED_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_CARROT.get()) + "_campfire_cooking"));
+        createPiecesRecipe(MoreFoodItems.CARROT_PIECES.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.CARROT_SOUP.get(), Items.CARROT, MoreFoodItems.CARROT_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_SOUP.get())));
+        createBreadRecipe(MoreFoodItems.CARROT_BREAD.get(), Items.CARROT, MoreFoodItems.CARROT_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_BREAD.get())));
+        createPieRecipe(MoreFoodItems.CARROT_PIE.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.CARROT_PIE.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_APPLE.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_APPLE.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_APPLE.get())));
-        createSmeltingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_smelting"));
-        createSmokingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_smoking"));
-        createCampfireCookingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_campfire_cooking"));
-        createPiecesRecipe(MoreFoodItems.APPLE_PIECES.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.APPLE_SOUP.get(), Items.APPLE, MoreFoodItems.APPLE_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_SOUP.get())));
-        createBreadRecipe(MoreFoodItems.APPLE_BREAD.get(), Items.APPLE, MoreFoodItems.APPLE_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_BREAD.get())));
-        createPieRecipe(MoreFoodItems.APPLE_PIE.get(), Items.APPLE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_PIE.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_APPLE.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_APPLE.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_APPLE.get())));
+        createSmeltingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_smelting"));
+        createSmokingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_smoking"));
+        createCampfireCookingRecipe(MoreFoodItems.COOKED_APPLE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_APPLE.get()) + "_campfire_cooking"));
+        createPiecesRecipe(MoreFoodItems.APPLE_PIECES.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.APPLE_SOUP.get(), Items.APPLE, MoreFoodItems.APPLE_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_SOUP.get())));
+        createBreadRecipe(MoreFoodItems.APPLE_BREAD.get(), Items.APPLE, MoreFoodItems.APPLE_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_BREAD.get())));
+        createPieRecipe(MoreFoodItems.APPLE_PIE.get(), Items.APPLE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.APPLE_PIE.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_KELP.get(), Items.DRIED_KELP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_KELP.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_KELP.get(), Items.DRIED_KELP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_KELP.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_KELP.get(), Items.DRIED_KELP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_KELP.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_KELP.get(), Items.DRIED_KELP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_KELP.get())));
-        createPiecesRecipe(MoreFoodItems.KELP_PIECES.get(), Items.KELP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.KELP_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.KELP_SOUP.get(), Items.KELP, MoreFoodItems.KELP_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.KELP_SOUP.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_KELP.get(), Items.DRIED_KELP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_KELP.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_KELP.get(), Items.DRIED_KELP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_KELP.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_KELP.get(), Items.DRIED_KELP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_KELP.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_KELP.get(), Items.DRIED_KELP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_KELP.get())));
+        createPiecesRecipe(MoreFoodItems.KELP_PIECES.get(), Items.KELP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.KELP_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.KELP_SOUP.get(), Items.KELP, MoreFoodItems.KELP_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.KELP_SOUP.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_POTATO.get(), Items.POTATO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_POTATO.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_POTATO.get(), Items.POTATO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_POTATO.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_POTATO.get(), Items.POTATO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_POTATO.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_POTATO.get(), Items.POTATO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_POTATO.get())));
-        createPiecesRecipe(MoreFoodItems.POTATO_PIECES.get(), Items.POTATO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.POTATO_SOUP.get(), Items.POTATO, MoreFoodItems.POTATO_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_SOUP.get())));
-        createBreadRecipe(MoreFoodItems.POTATO_BREAD.get(), Items.POTATO, MoreFoodItems.POTATO_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_BREAD.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_POTATO.get(), Items.POTATO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_POTATO.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_POTATO.get(), Items.POTATO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_POTATO.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_POTATO.get(), Items.POTATO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_POTATO.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_POTATO.get(), Items.POTATO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_POTATO.get())));
+        createPiecesRecipe(MoreFoodItems.POTATO_PIECES.get(), Items.POTATO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.POTATO_SOUP.get(), Items.POTATO, MoreFoodItems.POTATO_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_SOUP.get())));
+        createBreadRecipe(MoreFoodItems.POTATO_BREAD.get(), Items.POTATO, MoreFoodItems.POTATO_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.POTATO_BREAD.get())));
 
-        createSmeltingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_smelting"));
-        createSmokingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_smoking"));
-        createCampfireCookingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_campfire_cooking"));
-        createPiecesRecipe(MoreFoodItems.PHANTOM_PIECES.get(), Items.PHANTOM_MEMBRANE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PHANTOM_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.PHANTOM_SOUP.get(), Items.PHANTOM_MEMBRANE, MoreFoodItems.PHANTOM_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PHANTOM_SOUP.get())));
+        createSmeltingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_smelting"));
+        createSmokingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_smoking"));
+        createCampfireCookingRecipe(MoreFoodItems.COOKED_PHANTOM.get(), Items.PHANTOM_MEMBRANE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_PHANTOM.get()) + "_campfire_cooking"));
+        createPiecesRecipe(MoreFoodItems.PHANTOM_PIECES.get(), Items.PHANTOM_MEMBRANE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PHANTOM_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.PHANTOM_SOUP.get(), Items.PHANTOM_MEMBRANE, MoreFoodItems.PHANTOM_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PHANTOM_SOUP.get())));
 
-        createPiecesRecipe(MoreFoodItems.PUFFERFISH_PIECES.get(), Items.PUFFERFISH).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUFFERFISH_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.PUFFERFISH_SOUP.get(), Items.PUFFERFISH, MoreFoodItems.PUFFERFISH_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUFFERFISH_SOUP.get())));
+        createPiecesRecipe(MoreFoodItems.PUFFERFISH_PIECES.get(), Items.PUFFERFISH).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUFFERFISH_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.PUFFERFISH_SOUP.get(), Items.PUFFERFISH, MoreFoodItems.PUFFERFISH_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUFFERFISH_SOUP.get())));
 
-        createSoupRecipe(MoreFoodItems.PUMPKING_SOUP.get(), Items.PUMPKIN, Items.PUMPKIN_SEEDS).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUMPKING_SOUP.get())));
-        createBreadRecipe(MoreFoodItems.PUMPKING_BREAD.get(), Items.PUMPKIN, Items.PUMPKIN_SEEDS).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUMPKING_BREAD.get())));
+        createSoupRecipe(MoreFoodItems.PUMPKING_SOUP.get(), Items.PUMPKIN, Items.PUMPKIN_SEEDS).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUMPKING_SOUP.get())));
+        createBreadRecipe(MoreFoodItems.PUMPKING_BREAD.get(), Items.PUMPKIN, Items.PUMPKIN_SEEDS).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.PUMPKING_BREAD.get())));
 
-        createSmeltingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_smelting"));
-        createSmokingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_smoking"));
-        createCampfireCookingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_campfire_cooking"));
-        createPiecesRecipe(MoreFoodItems.BAMBOO_PIECES.get(), Items.BAMBOO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.BAMBOO_PIECES.get())));
-        createSoupRecipe(MoreFoodItems.BAMBOO_SOUP.get(), Items.BAMBOO, MoreFoodItems.BAMBOO_PIECES.get()).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.BAMBOO_SOUP.get())));
+        createSmeltingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_smelting"));
+        createSmokingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_smoking"));
+        createCampfireCookingRecipe(MoreFoodItems.COOKED_BAMBOO.get(), Items.BAMBOO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.COOKED_BAMBOO.get()) + "_campfire_cooking"));
+        createPiecesRecipe(MoreFoodItems.BAMBOO_PIECES.get(), Items.BAMBOO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.BAMBOO_PIECES.get())));
+        createSoupRecipe(MoreFoodItems.BAMBOO_SOUP.get(), Items.BAMBOO, MoreFoodItems.BAMBOO_PIECES.get()).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.BAMBOO_SOUP.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_RABBIT.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_RABBIT.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_RABBIT.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_RABBIT.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_RABBIT.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_RABBIT.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_RABBIT.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_RABBIT.get(), Items.COOKED_RABBIT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_RABBIT.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_MELON_SLICE.get(), Items.MELON_SLICE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_MELON_SLICE.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_MELON_SLICE.get(), Items.MELON_SLICE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_MELON_SLICE.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_MELON_SLICE.get(), Items.MELON_SLICE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_MELON_SLICE.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_MELON_SLICE.get(), Items.MELON_SLICE).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_MELON_SLICE.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_MELON_SLICE.get(), Items.MELON_SLICE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_MELON_SLICE.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_MELON_SLICE.get(), Items.MELON_SLICE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_MELON_SLICE.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_MELON_SLICE.get(), Items.MELON_SLICE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_MELON_SLICE.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_MELON_SLICE.get(), Items.MELON_SLICE).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_MELON_SLICE.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_CHICKEN.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_CHICKEN.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_CHICKEN.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_CHICKEN.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_CHICKEN.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_CHICKEN.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_CHICKEN.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_CHICKEN.get(), Items.COOKED_CHICKEN).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_CHICKEN.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_MUTTON.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_MUTTON.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_MUTTON.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_MUTTON.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_MUTTON.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_MUTTON.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_MUTTON.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_MUTTON.get(), Items.COOKED_MUTTON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_MUTTON.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_PORKCHOP.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_PORKCHOP.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_PORKCHOP.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_PORKCHOP.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_PORKCHOP.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_PORKCHOP.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_PORKCHOP.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_PORKCHOP.get(), Items.COOKED_PORKCHOP).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_PORKCHOP.get())));
 
-        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_BEEF.get(), Items.COOKED_BEEF).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_BEEF.get())));
-        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_BEEF.get(), Items.COOKED_BEEF).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_BEEF.get())));
-        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_BEEF.get(), Items.COOKED_BEEF).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_BEEF.get())));
-        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_BEEF.get(), Items.COOKED_BEEF).save(consumer,new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_BEEF.get())));
+        createIronFoodRecipe(MoreFoodItems.IRON_COOKED_BEEF.get(), Items.COOKED_BEEF).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.IRON_COOKED_BEEF.get())));
+        createGoldenFoodRecipe(MoreFoodItems.GOLD_COOKED_BEEF.get(), Items.COOKED_BEEF).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.GOLD_COOKED_BEEF.get())));
+        createDiamondFoodRecipe(MoreFoodItems.DIAMOND_COOKED_BEEF.get(), Items.COOKED_BEEF).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.DIAMOND_COOKED_BEEF.get())));
+        createEmeraldFoodRecipe(MoreFoodItems.EMERALD_COOKED_BEEF.get(), Items.COOKED_BEEF).save(output,new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.EMERALD_COOKED_BEEF.get())));
 
-        createRiceBowlRecipe(MoreFoodItems.RICE_CHICKENBOWL.get(), Items.COOKED_CHICKEN).save(consumer,new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_CHICKENBOWL.get())));
-        createRiceBowlRecipe(MoreFoodItems.RICE_SALMONBOWL.get(), Items.COOKED_SALMON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_SALMONBOWL.get())));
-        createRiceBowlRecipe(MoreFoodItems.RICE_CODBOWL.get(), Items.COOKED_COD).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_CODBOWL.get())));
-        createRiceVegetableBowlRecipe().save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_VEGETABLEBOWL.get())));
+        createRiceBowlRecipe(MoreFoodItems.RICE_CHICKENBOWL.get(), Items.COOKED_CHICKEN).save(output,new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_CHICKENBOWL.get())));
+        createRiceBowlRecipe(MoreFoodItems.RICE_SALMONBOWL.get(), Items.COOKED_SALMON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_SALMONBOWL.get())));
+        createRiceBowlRecipe(MoreFoodItems.RICE_CODBOWL.get(), Items.COOKED_COD).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_CODBOWL.get())));
+        createRiceVegetableBowlRecipe().save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.RICE_VEGETABLEBOWL.get())));
 
-        createSushiRecipe(MoreFoodItems.SUSHI_BAMBOO.get(), Items.BAMBOO).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_BAMBOO.get())));
-        createSushiRecipe(MoreFoodItems.SUSHI_CARROT.get(), Items.CARROT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_CARROT.get())));
-        createSushiRecipe(MoreFoodItems.SUSHI_BEETROOT.get(), Items.BEETROOT).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_BEETROOT.get())));
-        createSushiRecipe(MoreFoodItems.SUSHI_SALMON.get(), Items.SALMON).save(consumer, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_SALMON.get())));
+        createSushiRecipe(MoreFoodItems.SUSHI_BAMBOO.get(), Items.BAMBOO).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_BAMBOO.get())));
+        createSushiRecipe(MoreFoodItems.SUSHI_CARROT.get(), Items.CARROT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_CARROT.get())));
+        createSushiRecipe(MoreFoodItems.SUSHI_BEETROOT.get(), Items.BEETROOT).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_BEETROOT.get())));
+        createSushiRecipe(MoreFoodItems.SUSHI_SALMON.get(), Items.SALMON).save(output, new ResourceLocation(MoreFood.MOD_ID, getItemName(MoreFoodItems.SUSHI_SALMON.get())));
 
 
     }
@@ -164,15 +163,15 @@ public class MoreFoodRecipeProvider extends RecipeProvider implements ICondition
     }
 
     private static SimpleCookingRecipeBuilder createSmeltingRecipe(ItemLike output, ItemLike input) {
-        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,200, RecipeSerializer.SMELTING_RECIPE).unlockedBy(getHasName(input), has(input));
+        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,200, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new).unlockedBy(getHasName(input), has(input));
     }
 
     private static SimpleCookingRecipeBuilder createSmokingRecipe(ItemLike output, ItemLike input) {
-        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,100, RecipeSerializer.SMOKING_RECIPE).unlockedBy(getHasName(input), has(input));
+        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,100, RecipeSerializer.SMOKING_RECIPE, SmokingRecipe::new).unlockedBy(getHasName(input), has(input));
     }
 
     private static SimpleCookingRecipeBuilder createCampfireCookingRecipe(ItemLike output, ItemLike input) {
-        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,600, RecipeSerializer.CAMPFIRE_COOKING_RECIPE).unlockedBy(getHasName(input), has(input));
+        return SimpleCookingRecipeBuilder.generic(Ingredient.of(input), RecipeCategory.FOOD, output,1.0f,600, RecipeSerializer.CAMPFIRE_COOKING_RECIPE, CampfireCookingRecipe::new).unlockedBy(getHasName(input), has(input));
     }
 
     private static ShapelessRecipeBuilder createPiecesRecipe(ItemLike output, ItemLike input) {
@@ -251,5 +250,4 @@ public class MoreFoodRecipeProvider extends RecipeProvider implements ICondition
                 .unlockedBy(getHasName(MoreFoodItems.RICE.get()), has(MoreFoodItems.RICE.get()))
                 .unlockedBy(getHasName(input), has(input));
     }
-
 }

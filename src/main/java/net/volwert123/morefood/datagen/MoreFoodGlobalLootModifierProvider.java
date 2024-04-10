@@ -1,11 +1,13 @@
 package net.volwert123.morefood.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.volwert123.morefood.MoreFood;
 import net.volwert123.morefood.item.MoreFoodItems;
 import net.volwert123.morefood.loot.AddItemModifier;
@@ -17,13 +19,15 @@ public class MoreFoodGlobalLootModifierProvider extends GlobalLootModifierProvid
 
     @Override
     protected void start() {
-        add("rice_from_grass", new AddItemModifier(new LootItemCondition[] {
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRASS).build(),
-                LootItemRandomChanceCondition.randomChance(0.1f).build()
-        }, MoreFoodItems.RICE.get()));
-        add("rice_from_fern", new AddItemModifier(new LootItemCondition[] {
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.FERN).build(),
-                LootItemRandomChanceCondition.randomChance(0.1f).build()
-        }, MoreFoodItems.RICE.get()));
+        addLootModifier("rice_from_grass", Blocks.SHORT_GRASS, MoreFoodItems.RICE.get());
+        addLootModifier("rice_from_fern", Blocks.FERN, MoreFoodItems.RICE.get());
+    }
+
+    private void addLootModifier(String name, Block block, Item item) {
+        LootItemCondition[] conditions = new LootItemCondition[] {
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build(),
+                LootItemRandomChanceCondition.randomChance(0.15f).build()
+        };
+        add(name, new AddItemModifier(conditions, item));
     }
 }
